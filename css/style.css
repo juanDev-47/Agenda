@@ -1,0 +1,30 @@
+/* Custom properties */
+:root{
+     --primario: #C2185B;
+     --secundario: #FFC107;
+}
+
+
+html{
+     box-sizing: border-box;
+}
+*, *:before, *:after{
+      box-sizing: inherit;
+}
+
+body{
+     background-color: var(--primario);
+}
+.contenedor {
+     max-width: 1100px;
+     margin: 0 auto;
+}
+.sombra {
+     -webkit-box-shadow: 0px 7px 10px 2px rgba(0,0,0,0.68);
+     -moz-box-shadow: 0px 7px 10px 2px rgba(0,0,0,0.68);
+     box-shadow: 0px 7px 10px 2px rgba(0,0,0,0.68);
+}
+
+.bg-amarillo{
+     background-color: var(--secundario);
+}

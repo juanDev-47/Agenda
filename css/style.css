@@ -2,6 +2,10 @@
 :root{
      --primario: #C2185B;
      --secundario: #FFC107;
+     --PrimarioOscuro: rgb(156, 10, 69);
+
+     --fuentePrimaria: 'Arial', Helvetica, sans-serif;
+     --fuenteSecundaria: 'Poppins', sans-serif;
 }
 
 
@@ -14,6 +18,7 @@ html{
 
 body{
      background-color: var(--primario);
+     font-family: var(--fuentePrimaria);
 }
 .contenedor {
      max-width: 1100px;
@@ -27,4 +32,33 @@ body{
 
 .bg-amarillo{
      background-color: var(--secundario);
+}
+h1, h2 {
+     font-family: var(--fuenteSecundaria);
+     text-align: center;
+     margin: 0;
+}
+h1 {
+     padding: 20px;
+     color: white;
+}
+.contenedor-barra {
+      background-color: var(--PrimarioOscuro);
+}
+/* Formulario */
+form {
+     padding: 3rem;
+     margin-top: 2rem;
+     border-radius: 20;
+}
+form legend {
+     font-family: var(--fuenteSecundaria);
+     font-size: 2rem;
+     margin: 0 auto;
+}
+legend span {
+     font-size: 1rem;
+     margin-top: 1rem;
+     clear: both;
+     display: block;
 }

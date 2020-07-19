@@ -29,7 +29,7 @@ function leerFormulario(e){
           infoContacto.append('telefono', telefono);
           infoContacto.append('accion', accion);
 
-          console.log(...infoContacto);
+          // console.log(...infoContacto);
 
           if(accion === 'crear'){
                // crearemos un nuevo contacto
@@ -52,11 +52,11 @@ function insertarBD(datos){
      // pasar los datos 
      xhr.onload = function() {
           if(this.status === 200){               
-               console.log(JSON.parse(xhr.responseText));
+               // console.log(JSON.parse(xhr.responseText));
                // leemos la respuesta de php
                const respuesta = JSON.parse(xhr.responseText);
 
-               console.log(respuesta.empresa);
+
           }
      }
      // enviar los datos 

@@ -10,7 +10,11 @@
                </div>
 
                <div class="campo">
-                    <label for="nombre">Telefono:</label>
-                    <input type="tel" placeholder="Numero de contacto" id="nombre"> 
+                    <label for="telefono">Telefono:</label>
+                    <input type="tel" placeholder="Numero de contacto" id="telefono"> 
                </div>               
+          </div>
+          <div class="campo enviar"> 
+               <input type="hidden" id="accion" value="crear">
+               <input type="submit" value="guardar">
           </div>

@@ -11,9 +11,7 @@
      <legend>Edite el Contacto <span></span> </legend>
 
      <?php include 'inc/layout/formulario.php'; ?>
-     <div class="campo enviar"> 
-               <input type="submit" value="Cambiar">
-     </div>
+     
 </div>     
 
 

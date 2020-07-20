@@ -7,11 +7,11 @@ if($_POST['accion'] == 'crear'){
 
      //validar entradas
      $nombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
-     $nombre = filter_var($_POST['empresa'], FILTER_SANITIZE_STRING);
-     $nombre = filter_var($_POST['telefono'], FILTER_SANITIZE_STRING);
+     $empresa = filter_var($_POST['empresa'], FILTER_SANITIZE_STRING);
+     $telefono = filter_var($_POST['telefono'], FILTER_SANITIZE_STRING);
 
      try{
-          $stmt = $conn->prepare("INSERT INTO contactos(nombre, empresa, telefono) VALUES (?, ?, ?)");
+          $stmt = $conn->prepare("INSERT INTO contactos (nombre, empresa, telefono) VALUES (?, ?, ?)");
           $stmt->bind_param("sss", $nombre, $empresa, $telefono);
           $stmt->execute();
           if($stmt->affected_rows == 1){

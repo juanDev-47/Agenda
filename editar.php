@@ -1,4 +1,7 @@
-<?php include 'inc/layout/header.php'; ?>
+<?php
+ include 'inc/layout/header.php'; 
+ ?>
+
 <div class="contenedor-barra">
      <div class="contenedor barra">
      <a href="index.php" class="btn volver">Volver</a>

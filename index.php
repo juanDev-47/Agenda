@@ -1,4 +1,7 @@
-<?php include 'inc/layout/header.php'; ?>
+<?php 
+include 'inc/funciones/funciones.php';
+include 'inc/layout/header.php'; 
+?>
 
 <div class="contenedor-barra">
      <h1>Agenda de contactos</h1>
@@ -33,48 +36,24 @@
                     </thead>
 
                     <tbody>
-                         <tr>
-                              <td>Juan</td>
-                              <td>Udemy</td>
-                              <td>019381893</td>
-                              <td>
-                                   <a href="editar.php?id=1" class="btn-editar btn">
-                                        <i class="fas fa-pen-square"></i>
-                                   </a>
+                         <?php $contactos = obtenerContactos();
+                              if($contactos->num_rows){ ?>
+                              <tr>
+                                   <td>Juan</td>
+                                   <td>Udemy</td>
+                                   <td>019381893</td>
+                                   <td>
+                                        <a href="editar.php?id=1" class="btn-editar btn">
+                                             <i class="fas fa-pen-square"></i>
+                                        </a>
 
-                                   <button type="button" class="btn-borrar btn" data-id="1">
-                                        <i class="fas fa-trash-alt"></i>
-                                   </button>
-                              </td>
-                         </tr>
-                         <tr>
-                              <td>Juan</td>
-                              <td>Udemy</td>
-                              <td>019381893</td>
-                              <td>
-                                   <a href="editar.php?id=1" class="btn-editar btn">
-                                        <i class="fas fa-pen-square"></i>
-                                   </a>
-
-                                   <button type="button" class="btn-borrar btn" data-id="1">
-                                        <i class="fas fa-trash-alt"></i>
-                                   </button>
-                              </td>
-                         </tr>
-                         <tr>
-                              <td>Juan</td>
-                              <td>Udemy</td>
-                              <td>019381893</td>
-                              <td>
-                                   <a href="editar.php?id=1" class="btn-editar btn">
-                                        <i class="fas fa-pen-square"></i>
-                                   </a>
-
-                                   <button type="button" class="btn-borrar btn" data-id="1">
-                                        <i class="fas fa-trash-alt"></i>
-                                   </button>
-                              </td>
-                         </tr>
+                                        <button type="button" class="btn-borrar btn" data-id="1">
+                                             <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                   </td>
+                              </tr>
+                         
+                              <?php } ?>
                     </tbody>
                </table>
           </div>

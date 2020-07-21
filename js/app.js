@@ -6,6 +6,9 @@ eventListeners();
 function eventListeners() {
      // cuando el formulario de crear o editar se ejecuta
      formularioContactos.addEventListener('submit', leerFormulario);
+
+     // listener para eliminar el boton
+     listadoContactos.addEventListener('click', eliminarConctacto);
 }
 
 function leerFormulario(e){
@@ -112,6 +115,49 @@ function insertarBD(datos){
      }
      // enviar los datos 
      xhr.send(datos);
+}
+
+// eliminar el contacto
+
+function eliminarConctacto(e) {
+     if(e.target.parentElement.classList.contains('btn-borrar')){
+          // tomar el id
+          const id = e.target.parentElement.getAttribute('data-id');
+
+          // console.log(id);
+          // preguntar al usuario si esta seguro
+          const respuesta = confirm('¿Estas seguro(a)?');
+
+          if(respuesta){
+               // llamado al objeto
+               // crear el objeto
+               const xhr = new XMLHttpRequest();
+
+               // abrir la conexion
+               xhr.open('GET', `inc/modelos/modelo-contactos.php?id=${id}&accion=borrar`, true);
+
+               // leer la respuesta
+               xhr.onload = function() {
+                    if(this.status === 200){
+                         const resultado = JSON.parse(xhr.responseText);
+
+                         if(resultado.respuesta == 'correcto') {
+                              //eliminar el registro del DOM
+                              console.log(e.target.parentElement.parentElement.parentElement);
+                              e.target.parentElement.parentElement.parentElement.remove();
+
+                              //mostrar notificacion
+                              mostrarNotificacion('Contacto eliminado', 'correcto');
+                         } else {
+                              mostrarNotificacion('Hubo un error', 'error');
+                         }
+                    }
+               }
+
+               //enviar la respuesta
+               xhr.send();
+          } 
+     }
 }
 
 // Notificacion en pantalla 

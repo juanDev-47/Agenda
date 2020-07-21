@@ -37,23 +37,26 @@ include 'inc/layout/header.php';
 
                     <tbody>
                          <?php $contactos = obtenerContactos();
-                              if($contactos->num_rows){ ?>
+                              if($contactos->num_rows){ 
+
+                                   foreach($contactos as $contacto) { ?>
                               <tr>
-                                   <td>Juan</td>
-                                   <td>Udemy</td>
-                                   <td>019381893</td>
+                                   <td><?php echo $contacto['nombre'];?></td>
+                                   <td><?php echo $contacto['empresa'];?></td>
+                                   <td><?php echo $contacto['telefono'];?></td>
                                    <td>
-                                        <a href="editar.php?id=1" class="btn-editar btn">
+                                        <a href="editar.php?id=<td><?php echo $contacto['id']?></td>" class="btn-editar btn">
                                              <i class="fas fa-pen-square"></i>
                                         </a>
 
-                                        <button type="button" class="btn-borrar btn" data-id="1">
+                                        <button type="button" class="btn-borrar btn" data-id="<td><?php echo $contacto['id']?></td>">
                                              <i class="fas fa-trash-alt"></i>
                                         </button>
                                    </td>
                               </tr>
                          
-                              <?php } ?>
+                                   <?php } 
+                         } ?>
                     </tbody>
                </table>
           </div>

@@ -44,6 +44,9 @@ body{
      align-items: center;
 }
 /** Botonoes **/
+.btn:hover {
+     cursor: pointer;
+}
 .btn {
      font-size: 2rem;
      text-decoration: none;

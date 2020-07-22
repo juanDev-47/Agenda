@@ -2,7 +2,7 @@
      include 'inc/funciones/funciones.php';
      include 'inc/layout/header.php'; 
 
-     $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+     $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
 
      if(!$id) {
           die("No es valido");
@@ -15,9 +15,9 @@
 
  ?>
 
-<pre>
-     <?php var_dump($contacto); ?>
-</pre>
+<!-- <pre>
+      //var_dump($contacto);   // poner entre php para que funcione
+</pre> -->
 
 
 <div class="contenedor-barra">

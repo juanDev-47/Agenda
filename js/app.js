@@ -123,7 +123,8 @@ function insertarBD(datos){
                mostrarNotificacion('Contacto Creado correctamente', 'correcto');
                
           } 
-          numeroContactos();
+          // numeroContactos();
+          
      }
      // enviar los datos 
      xhr.send(datos);
@@ -192,7 +193,7 @@ function eliminarConctacto(e) {
                          } else {
                               mostrarNotificacion('Contacto eliminado', 'correcto');
 
-                              numeroContactos();
+                              // numeroContactos();
                          }
                          e.target.parentElement.parentElement.parentElement.remove();
                     }
@@ -237,7 +238,7 @@ function buscarContactos(e) {
           if(registro.childNodes[1].textContent.replace(/\s/g, " ").search(expresion) != -1){
                registro.style.display = 'table-row';
           }
-          numeroContactos();
+          // numeroContactos();
      });
 }
 // muestra el numeros de contactos

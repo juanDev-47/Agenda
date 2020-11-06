@@ -1,228 +1,245 @@
-/* Custom properties */
-:root{
-     --primario: #C2185B;
-     --secundario: #FFC107;
-     --PrimarioOscuro: rgb(156, 10, 69);
-
-     --fuentePrimaria: 'Arial', Helvetica, sans-serif;
-     --fuenteSecundaria: 'Poppins', sans-serif;
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
-
-html{
-     box-sizing: border-box;
+body {
+    font-family: 'Lato', sans-serif;
+    min-height: 100%;
 }
-*, *:before, *:after{
-      box-sizing: inherit;
+.swal2-shown aside {
+    height: 100vh;
 }
-
-body{
-     background-color: var(--primario);
-     font-family: var(--fuentePrimaria);
+/** Login **/
+.login,
+.crear-cuenta {
+    background: #455A64;
 }
-.contenedor {
-     max-width: 1100px;
-     margin: 30px auto;
-     border-radius: 10px;
+.contenedor-formulario {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
 }
-.sombra {
-     -webkit-box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.5);
-     -moz-box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.5);
-     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
-     border-radius: 10px;
+.contenedor-formulario h1 {
+    text-align: center;
+    color: white;
 }
-
-.bg-amarillo{
-     background-color: var(--secundario);
+.contenedor-formulario h1  span{
+    font-weight: 400;
+    font-size: 1.2rem;
 }
-.bg-blanco {
-     background-color: white;
+.caja-login {
+    background-color: #F2F2F2;
+    border: 1px solid #707070;
+    max-width: 650px;
+    width: 90%;
+    margin: 0 auto;
+    min-height: 300px;
+    -webkit-box-shadow: 0px 25px 35px -17px rgba(0,0,0,0.56);
+    -moz-box-shadow: 0px 25px 35px -17px rgba(0,0,0,0.56);
+    box-shadow: 0px 25px 35px -17px rgba(0,0,0,0.56);
+    padding: 3rem;
 }
-.barra {
-     display: grid;
-     grid-template-columns: 100px 1fr;
-     align-items: center;
-}
-/** Botonoes **/
-.btn:hover {
-     cursor: pointer;
-}
-.btn {
-     font-size: 2rem;
-     text-decoration: none;
-}
-.btn-editar {
-     color: var(--secundario);
-}
-.btn-borrar{
-     color: var(--primario);
-}
-.volver {
-     background-color: var(--secundario);
-     border-radius: 5px;
-     text-align: center;
-     color: #000000;
-     font-weight: 700;
-     font-size: 1.2rem;
-     padding: .5rem;
-}
-h1, h2 {
-     font-family: var(--fuenteSecundaria);
-     text-align: center;
-     margin: 0;
-}
-h1 {
-     padding: 20px;
-     color: white;
-}
-h2 {
-     font-size: 2rem;
-     color: var(--PrimarioOscuro);
-}
-.contenedor-barra {
-      background-color: var(--PrimarioOscuro);
-}
-/* Formulario */
-form {
-     padding: 3rem;
-     margin-top: 2rem;
-     border-radius: 20;
-}
-form legend {
-     font-family: var(--fuenteSecundaria);
-     font-size: 2rem;
-     margin: 0 auto;
-}
-legend span {
-     font-size: 1rem;
-     margin-top: 1rem;
-     margin-bottom: 2rem;
-     clear: both;
-     display: block;
-}
-
-@media(min-width:786px){
-     .campos {
-          display: flex;
-          justify-content: space-between;
-     }
-     .campo {
-          flex: 0 0 calc(33.3% - 1rem);
-     }
-}
-
 .campo {
-    padding: .5rem 0;
+    display: flex;
+    margin-bottom: 1rem;
+    align-items: center;
 }
 .campo label {
-     font-size: 1.2rem;
+    flex: 0 0 100px;
+    text-align: right;
+    padding-right: 1rem;
 }
 .campo input[type="text"],
-.campo input[type="tel"] {
-     width: 100%;
-     border: none;
-     padding: .5rem;
-     height: 3rem;
-     margin-top: .5rem;
-     font-size: 1.2rem;
-     border-radius: 10px;
+.campo input[type="password"] {
+    height: 3rem;
+    border: 0;
+    flex: 1;
+    border: 1px solid #455A64;
+    border-radius: 5rem;
+    padding-left: 2rem;
 }
-.enviar{
-     display: flex;
-     justify-content: flex-end;
+.enviar {
+   justify-content: flex-end;
 }
-.campo input[type="submit"] {
-     background-color: var(--primario);
-     border: none;
-     color: white;
-     padding: 1rem 4rem;
-     text-transform: uppercase;
-     font-size: 1.2rem;
-     transition: background-color .5s ease-in-out;
-     border-radius: 10px;
-     flex:1;
+.boton {
+    background-color: #FDD835;
+    text-align: center;
+    transition: background-color .5s ease-in-out;
+    display: block;
+    padding: 1rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    border: none;
+    font-weight: 900;
 }
-.campo input[type="submit"]:hover {
-     cursor: pointer;
-     background-color: var(--PrimarioOscuro);
+.boton:hover {
+    cursor: pointer;
+    background-color: rgb(219, 184, 29)!important;
 }
-@media(min-width:786px){
-     .campo input[type="submit"]{
-          flex: 0 0 auto;
-     }
+.campo a {
+    color: black;
+    text-decoration: none;
 }
-/* listado de contactos */
-.contactos {
-     padding: 2rem;
-     margin-top: 3rem;
-}
-.contenedor-contactos {
-     max-width: 800px;
-     margin: 4rem auto 0 auto;
-}
-.total-contactos {
-     font-family: var(--fuenteSecundaria);
-     margin: 2rem 0;
-     text-align: center;
-     color: var(--primario);
-     font-size: 2rem;
-}
-.total-contactos span {
-     font-size: 3rem;
-     font-weight: 900;
-}
-.buscador {
-     width: 100%;
-     height: 4rem;
-     padding: 1rem;
-     border: 1px solid #e1e1e1;
-     margin: 2rem 0;
-}
-.contenedor-tabla{
-     overflow: scroll;
-}
-.listado-contactos {
-     width: 100%;
-     margin-top: 1rem;
-     border-collapse: collapse;
-}
-.listado-contactos thead{
-     background-color: var(--primario);
-     color: #ffffff;
-     text-transform: uppercase;
-}
-.listado-contactos thead th{
-     padding: 1rem 0;
-}
-.listado-contactos tbody td{
-     padding: .5rem;
 
+/** Barra **/
+body.index {
+    height: 100vh;
 }
-.listado-contactos tbody td:nth-child(4){
-     text-align: center;
+.barra {
+    background-color: #455A64;
+    padding: 1rem;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.listado-contactos button {
-     background-color: transparent!important;
-     border: none;
+.barra h1 {
+    color: white;
+    margin:0;
+    font-size: 1.4rem;
 }
-/* Notificaciones */
-.notificacion {
-     position: fixed;
-     top: 2rem;
-     right: 1rem;
-     padding: 1rem 3rem;
-     opacity: 0;
-     transition: opacity .5s ease;
+.barra a {
+    color: white;
+    text-decoration: none;
 }
-.visible {
-     opacity: 1;
+
+/*** sidebar**/
+.contenedor-proyectos {
+    min-height: 100vh;
+    max-width: 300px;
+    background-color: #607D8B;
+    padding-top: 1rem;
 }
-/* colores de notificacion */
-.correcto {
-     background-color: rgb(179,241,117);
-     color: green;
+.panel {
+    padding: 1rem;
+    margin: 1rem;
 }
-.error {
-     background-color: rgb(238,148,166);
-     color: rgb(163,0,33);
+.panel a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+.panel h2 {
+    color: #FDD835;
+    font-weight: 900;
+    text-align: center;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.crear-proyecto i {
+    margin-left: 1rem;
+}
+.crear-proyecto a {
+    color: #455A64;
+}
+
+.lista-proyectos ul{
+    list-style: none;
+    padding: 1.5rem 0 0 0;
+    margin: 0;
+}
+.lista-proyectos ul li {
+    margin-bottom: 1rem;
+}
+.lista-proyectos ul li a:hover {
+    color: #FDD835;
+}
+
+
+/** Contenido Principal */
+.contenedor {
+    display: flex;
+    height: calc( 100% - 60px);
+}
+.contenido-principal {
+    flex: 1;
+    padding: 1rem;
+    overflow: scroll;
+}
+.contenido-principal h1,
+.contenido-principal h2 {
+    text-align: center;
+}
+.contenido-principal h1 {
+    font-size: 1.8rem;
+}
+.contenido-principal h2 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+}
+.contenido-principal h1 span {
+    font-weight: 400;
+}
+.agregar-tarea {
+    max-width: 800px;
+    width: 90%;
+    background-color: #607D8B;
+    margin: 0 auto;
+    padding: 2rem;
+    color: white;
+    transition: background-color .5s ease-in-out;
+}
+
+/** Listado Pendientes **/
+.listado-pendientes {
+    background-color: #F2F2F2;
+    max-width: 800px;
+    width: 90%;
+    margin: 2rem auto 0 auto;
+    padding: 2rem;
+    border: 1px solid #999;
+}
+.listado-pendientes ul {
+    padding: 0;
+    list-style: none;
+}
+.listado-pendientes ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #d1d1d1;
+}
+.listado-pendientes ul li:last-of-type {
+    border-bottom: none;
+}
+.listado-pendientes ul li i {
+    cursor: pointer;
+}
+.acciones i:last-child{
+    margin-left: 3rem;
+}
+.completo {
+    color: #00B762;
+}
+.alerta {
+    background-color: red;
+    padding: .5rem;
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+}
+/* Barra de avance del proyecto */
+.barra-avance {
+    height: 20px;
+    width: 90%;
+    margin: 0 auto;
+    max-width: 800px;
+    background-color: #F2F2F2;
+    border-radius: 10px;
+}
+.porcentaje {
+    border-radius: 10px;
+    width: 0%;
+    height: 100%;
+    background-color: #00B762;
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem, 1rem;
+    transition: width .5s ease-in-out;
 }

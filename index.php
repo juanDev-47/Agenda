@@ -1,66 +1,92 @@
-<?php 
-include 'inc/funciones/funciones.php';
-include 'inc/layout/header.php'; 
+<?php
+    include 'inc/funciones/sesiones.php';
+    include 'inc/funciones/funciones.php';
+    include 'inc/templates/header.php'; 
+    include 'inc/templates/barra.php'; 
+
+// obtener el ID de la URL
+
+    if(isset($_GET['id_proyecto'])) {
+        $id_proyecto = $_GET['id_proyecto'];
+    } 
+
 ?>
 
-<div class="contenedor-barra">
-     <h1>Agenda de contactos</h1>
-</div>
 
-<div class="bg-amarillo contenedor sombra">
-     <form action="#"  id="contacto">
-          <legend>Añada un contacto <span>Todos los campos son obligatorios  </span> </legend>
 
-          <?php include 'inc/layout/formulario.php'; ?>
-          
-     </form>
-</div>
 
-<div class="bg-blanco contenedor sombra contactos">
-     <div class="contenedor-contactos">
-          <h2>Contactos</h2>
-          
-          <input type="text" id="buscar" class="buscador sombra" placeholder="Buscar Contactos...">
+<div class="contenedor">
+    <?php include 'inc/templates/sidebar.php'?>
 
-          <p class="total-contactos"><span></span> Contactos</p>
+    <main class="contenido-principal">
+        <?php
+                $proyecto = obtenerNombreProyecto($id_proyecto);
 
-          <div class="contenedor-tabla">
-               <table id="listado-contactos" class="listado-contactos">
-                    <thead>
-                         <tr>
-                              <th>Nombre</th>
-                              <th>Empresa</th>
-                              <th>Telefono</th>
-                              <th>Acciones</th>
-                         </tr>
-                    </thead>
+                if($proyecto): ?> 
+        <h1>Proyecto actual:
+                <?php foreach($proyecto as $nombre): ?>
+                    <span><?php echo $nombre['nombre']; ?></span>
+                <?php endforeach;?>            
+        </h1>
 
-                    <tbody>
-                         <?php $contactos = obtenerContactos();
-                              if($contactos->num_rows){ 
+        <form action="#" class="agregar-tarea">
+            <div class="campo">
+                <label for="tarea">Tarea:</label>
+                <input type="text" placeholder="Nombre Tarea" class="nombre-tarea"> 
+            </div>
+            <div class="campo enviar">
+                <input type="hidden" id="id_proyecto" value="<?php echo $id_proyecto; ?>" >
+                <input type="submit" class="boton nueva-tarea" value="Agregar">
+            </div>
+        </form>
+        
+        <?php
+            else:
+                // si no hay proyectos seleccionados
 
-                                   foreach($contactos as $contacto) { ?>
-                              <tr>
-                                   <td><?php echo $contacto['nombre'];?></td>
-                                   <td><?php echo $contacto['empresa'];?></td>
-                                   <td><?php echo $contacto['telefono'];?></td>
-                                   <td>
-                                        <a href="editar.php?id=<td><?php echo $contacto['id']?></td>" class="btn-editar btn">
-                                             <i class="fas fa-pen-square"></i>
-                                        </a>
+                echo "<p>selecciona un proyecto a la izquierda </p>";
+            endif;
+        
+        ?>
 
-                                        <button type="button" class="btn-borrar btn" data-id="<td><?php echo $contacto['id']?></td>">
-                                             <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                   </td>
-                              </tr>
-                         
-                                   <?php } 
-                         } ?>
-                    </tbody>
-               </table>
-          </div>
-     </div>
-</div>
+ 
 
-<?php include 'inc/layout/footer.php'; ?>
+        <h2>Listado de tareas:</h2>
+
+        <div class="listado-pendientes">
+            <ul>
+                <?php
+                    //obtiene las tareas del proyecto actual
+                    $tareas = obtenerTareasProyecto($id_proyecto);
+                    if($tareas->num_rows > 0) {
+                        // si hay tareas
+                        foreach($tareas as $tarea): ?>
+                            <li id="tarea:<?php echo $tarea['id'] ?>" class="tarea">
+                            <p><?php echo $tarea['nombre'] ?></p>
+                                <div class="acciones">
+                                    <i class="far fa-check-circle <?php echo ($tarea['estado'] === '1' ? 'completo' : '')?>"></i>
+                                    <i class="fas fa-trash"></i> 
+                                </div>
+                            </li>
+                        <?php endforeach;    
+                    } else {
+                        // no hay tareas 
+                        echo "<p>no hay tareas en este proyecto</p>";
+                    }
+                ?>
+                  
+            </ul>
+        </div>
+        <div class="avance">
+            <h2>Avance del proyecto:</h2>
+            <div id="barra-avance" class="barra-avance">
+                <div id="porcentaje" class="porcentaje"></div>
+            </div>
+        </div>
+    </main>
+</div><!--.contenedor-->
+
+
+    <?php
+    include 'inc/templates/footer.php'; 
+    ?>

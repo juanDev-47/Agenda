@@ -8,7 +8,9 @@
 
     if(isset($_GET['id_proyecto'])) {
         $id_proyecto = $_GET['id_proyecto'];
-    } 
+    } else {
+        $id_proyecto = null;
+    }
 
 ?>
 
@@ -20,14 +22,18 @@
 
     <main class="contenido-principal">
         <?php
-                $proyecto = obtenerNombreProyecto($id_proyecto);
+        $proyecto = null;
+        if($id_proyecto){ 
+            $proyecto = obtenerNombreProyecto($id_proyecto);
+        }  
 
-                if($proyecto): ?> 
-        <h1>Proyecto actual:
+         if($proyecto): ?> 
+            <h1>Proyecto actual:
                 <?php foreach($proyecto as $nombre): ?>
                     <span><?php echo $nombre['nombre']; ?></span>
                 <?php endforeach;?>            
-        </h1>
+            </h1>
+            
 
         <form action="#" class="agregar-tarea">
             <div class="campo">
@@ -57,7 +63,9 @@
             <ul>
                 <?php
                     //obtiene las tareas del proyecto actual
-                    $tareas = obtenerTareasProyecto($id_proyecto);
+                    if($id_proyecto){ 
+                        $tareas = obtenerTareasProyecto($id_proyecto);
+                    }
                     if($tareas->num_rows > 0) {
                         // si hay tareas
                         foreach($tareas as $tarea): ?>
